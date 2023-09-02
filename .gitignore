@@ -44,3 +44,7 @@ dump_libritts/
 /notebooks/test_saved/
 build/
 dist/
+libritts/
+libritts*/
+libritts1/
+venv/
