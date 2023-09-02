@@ -131,7 +131,7 @@ def main(
 ):
 
     with open(yaml_path) as file:
-        attrs = yaml.load(file)
+        attrs = yaml.safe_load(file)
         hop_size = attrs["hop_size"]
 
     Path(output_durations_path).mkdir(parents=True, exist_ok=True)
