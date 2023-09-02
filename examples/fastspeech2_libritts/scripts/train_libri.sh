@@ -1,11 +1,11 @@
 CUDA_VISIBLE_DEVICES=0 python examples/fastspeech2_libritts/train_fastspeech2.py \
-  --train-dir ./dump_libtitts/train/ \
-  --dev-dir ./dump_libtitts/valid/ \
+  --train-dir ./libtitts/train/ \
+  --dev-dir ./libtitts/valid/ \
   --outdir ./examples/fastspeech2_libritts/outdir_libri/ \
   --config ./examples/fastspeech2_libritts/conf/fastspeech2libritts.yaml \
   --use-norm 1 \
-  --f0-stat ./dump_libtitts/stats_f0.npy \
-  --energy-stat ./dump_libtitts/stats_energy.npy \
+  --f0-stat ./libtitts/stats_f0.npy \
+  --energy-stat ./libtitts/stats_energy.npy \
   --mixed_precision 1 \
   --dataset_config preprocess/libritts_preprocess.yaml \
-  --dataset_stats ./dump_libtitts/stats.npy
+  --dataset_stats ./libtitts/stats.npy
