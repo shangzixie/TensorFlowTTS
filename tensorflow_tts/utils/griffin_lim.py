@@ -78,7 +78,7 @@ class TFGriffinLim(tf.keras.layers.Layer):
             self.scaler = scaler
         self.ds_config = dataset_config
         self.mel_basis = librosa.filters.mel(
-            self.ds_config["sampling_rate"],
+            sr=self.ds_config["sampling_rate"],
             n_fft=self.ds_config["fft_size"],
             n_mels=self.ds_config["num_mels"],
             fmin=self.ds_config["fmin"],
