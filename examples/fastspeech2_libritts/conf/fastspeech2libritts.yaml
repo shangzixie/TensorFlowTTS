@@ -6,7 +6,7 @@
 ###########################################################
 #                FEATURE EXTRACTION SETTING               #
 ###########################################################
-hop_size: 300            # Hop size.
+hop_size: 256            # Hop size.
 format: "npy"
 
 ###########################################################
@@ -16,7 +16,7 @@ model_type: fastspeech2
 
 fastspeech2_params:
     dataset: "libritts"
-    n_speakers: 20
+    n_speakers: 1
     encoder_hidden_size: 384
     encoder_num_hidden_layers: 4
     encoder_num_attention_heads: 2
