@@ -22,7 +22,8 @@ if LooseVersion(pip.__version__) < LooseVersion("19"):
 # TODO(@dathudeptrai) update requirement if needed.
 requirements = {
     "install": [
-        "tensorflow==2.3",
+        "pyopenjtalk",
+        "tensorflow==2.5",
         "tensorflow-addons>=0.10.0",
         "setuptools>=38.5.1",
         "huggingface_hub==0.0.8",
@@ -33,7 +34,7 @@ requirements = {
         "tqdm>=4.26.1",
         "h5py>=2.10.0",
         "unidecode>=1.1.1",
-        "inflect>=4.1.0",
+        "inflect==4.1.0",
         "scikit-learn>=0.22.0",
         "pyworld>=0.2.10",
         "numba>=0.48",  # Fix No module named "numba.decorators"
@@ -44,7 +45,6 @@ requirements = {
         "click",
         "g2p_en",
         "dataclasses",
-        "pyopenjtalk",
     ],
     "setup": ["numpy", "pytest-runner",],
     "test": [
