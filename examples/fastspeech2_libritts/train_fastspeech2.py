@@ -492,7 +492,7 @@ def main():
     try:
         subprocess.run(["zip", "-r", output_zip_file, folder_to_zip], check=True)
         print(f"Folder '{folder_to_zip}' successfully zipped to '{output_zip_file}'")
-        shutil.copy("/content/myfolder.zip","/content/drive/MyDrive")
+        shutil.copy("/content/model_checkpoints.zip","/content/drive/MyDrive")
     except subprocess.CalledProcessError as e:
         print(f"Error: {e}")
 
