@@ -475,19 +475,18 @@ def main():
     trainer.compile(model=fastspeech, optimizer=optimizer)
 
     # start training
-    save_path = os.path.join(config["outdir"], "checkpoints/")
     try:
         trainer.fit(
             train_dataset,
             valid_dataset,
-            saved_path=save_path,
+            saved_path=os.path.join(config["outdir"], "checkpoints/"),
             resume=args.resume,
         )
     except KeyboardInterrupt:
         trainer.save_checkpoint()
         logging.info(f"Successfully saved checkpoint @ {trainer.steps}steps.")
 
-    folder_to_zip = save_path
+    folder_to_zip = config["outdir"]
     output_zip_file = "/content/model_checkpoints.zip"
     try:
         subprocess.run(["zip", "-r", output_zip_file, folder_to_zip], check=True)
