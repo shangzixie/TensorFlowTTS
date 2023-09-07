@@ -46,6 +46,7 @@ from tensorflow_tts.utils import (
     return_strategy,
     TFGriffinLim,
 )
+import subprocess
 
 
 class FastSpeech2Trainer(Seq2SeqBasedTrainer):
@@ -473,17 +474,25 @@ def main():
     trainer.compile(model=fastspeech, optimizer=optimizer)
 
     # start training
+    save_path = os.path.join(config["outdir"], "checkpoints/")
     try:
         trainer.fit(
             train_dataset,
             valid_dataset,
-            saved_path=os.path.join(config["outdir"], "checkpoints/"),
+            saved_path=save_path,
             resume=args.resume,
         )
     except KeyboardInterrupt:
         trainer.save_checkpoint()
         logging.info(f"Successfully saved checkpoint @ {trainer.steps}steps.")
 
+    folder_to_zip = save_path
+    output_zip_file = "/content/model_checkpoints.zip"
+    try:
+        subprocess.run(["zip", "-r", output_zip_file, folder_to_zip], check=True)
+        print(f"Folder '{folder_to_zip}' successfully zipped to '{output_zip_file}'")
+    except subprocess.CalledProcessError as e:
+        print(f"Error: {e}")
 
 if __name__ == "__main__":
     main()
