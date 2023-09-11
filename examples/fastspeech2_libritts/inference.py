@@ -33,3 +33,6 @@ def Fastspeech2Inferece():
     fig.colorbar(mappable=im, shrink=0.65, orientation='horizontal', ax=ax1)
     plt.show()
     plt.close()
+
+if __name__ == "__main__":
+    Fastspeech2Inferece()
