@@ -486,14 +486,14 @@ def main():
         trainer.save_checkpoint()
         logging.info(f"Successfully saved checkpoint @ {trainer.steps}steps.")
 
-    folder_to_zip = config["outdir"]
-    output_zip_file = "/content/model_checkpoints.zip"
-    try:
-        subprocess.run(["zip", "-r", output_zip_file, folder_to_zip], check=True)
-        print(f"Folder '{folder_to_zip}' successfully zipped to '{output_zip_file}'")
-        shutil.copy(output_zip_file,"/content/drive/MyDrive")
-    except subprocess.CalledProcessError as e:
-        print(f"Error: {e}")
+    # folder_to_zip = config["outdir"]
+    # output_zip_file = "/content/model_checkpoints.zip"
+    # try:
+    #     subprocess.run(["zip", "-r", output_zip_file, folder_to_zip], check=True)
+    #     print(f"Folder '{folder_to_zip}' successfully zipped to '{output_zip_file}'")
+    #     shutil.copy(output_zip_file,"/content/drive/MyDrive")
+    # except subprocess.CalledProcessError as e:
+    #     print(f"Error: {e}")
 
 if __name__ == "__main__":
     main()

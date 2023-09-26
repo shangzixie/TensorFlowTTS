@@ -172,12 +172,12 @@ class BasedTrainer(metaclass=abc.ABCMeta):
             self.save_checkpoint()
             logging.info(f"Successfully saved checkpoint @ {self.steps} steps.")
 
-            os.remove("/content/drive/MyDrive/model_checkpoints.zip")
-            folder_to_zip = "/content/TensorFlowTTS/examples/fastspeech2_libritts/outdir_libri"
-            output_zip_file = "/content/model_checkpoints.zip"
-            subprocess.run(["zip", "-r", output_zip_file, folder_to_zip], check=True)
-            print(f"Folder '{folder_to_zip}' successfully zipped to '{output_zip_file}'")
-            shutil.copy(output_zip_file,"/content/drive/MyDrive")
+            # os.remove("/content/drive/MyDrive/model_checkpoints.zip")
+            # folder_to_zip = "/content/TensorFlowTTS/examples/fastspeech2_libritts/outdir_libri"
+            # output_zip_file = "/content/model_checkpoints.zip"
+            # subprocess.run(["zip", "-r", output_zip_file, folder_to_zip], check=True)
+            # print(f"Folder '{folder_to_zip}' successfully zipped to '{output_zip_file}'")
+            # shutil.copy(output_zip_file,"/content/drive/MyDrive")
 
 
     def generate_and_save_intermediate_result(self, batch):
@@ -977,7 +977,10 @@ class Seq2SeqBasedTrainer(BasedTrainer, metaclass=abc.ABCMeta):
         self._optimizer = self.ckpt.optimizer
         # re-assign iterations (global steps) for optimizer.
         self._optimizer.iterations.assign(tf.cast(self.steps, tf.int64))
-
+        print("---------------------")
+        print(self.steps)
+        print(self.epochs)
+        print("---------------------")
         # load weights.
         utils.load_weights(
             self._model,
